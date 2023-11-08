@@ -1,26 +1,17 @@
 import React from 'react';
 import { CustomerInfo, CustomerProfileInfo, CustomerDetailInfo } from '../interface/interfaces';
+import { TableCell, TableRow } from '@mui/material';
 
 function Customer(props: CustomerInfo) {
-    return <div>
-        <CustomerProfile id={props.id} name={props.name} image={props.image}></CustomerProfile>
-        <CustomerDetail birthday={props.birthday} sex={props.sex} job={props.job} ></CustomerDetail>
-    </div>
+    return <TableRow>
+        <TableCell>{props.id}</TableCell>
+        <TableCell><img src={props.image} alt='profile'></img></TableCell>
+        <TableCell>{props.name}</TableCell>
+        <TableCell>{props.birthday}</TableCell>
+        <TableCell>{props.sex}</TableCell>
+        <TableCell>{props.job}</TableCell>
+    </TableRow>
 }
 
-function CustomerProfile(props: CustomerProfileInfo) {
-    return <div>
-        <img src={props.image} alt="profile" />
-        <h2>{props.name}({props.id})</h2>
-    </div>
-}
-
-function CustomerDetail(props: CustomerDetailInfo) {
-    return <div>
-        <p>{props.birthday}</p>
-        <p>{props.sex}</p>
-        <p>{props.job}</p>
-    </div>
-}
 
 export default Customer;

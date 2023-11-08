@@ -1,7 +1,14 @@
 import React from 'react';
 import Customer from './components/customer';
 import { CustomerInfo } from './interface/interfaces';
+import { Table, TableBody, TableCell, TableHead } from '@mui/material';
+import { styled } from '@mui/system';
 
+const RootStyle = styled('div')({
+  width: '100%',
+  marginTop: '30px',
+  overflow: 'auto'
+})
 
 function App() {
   const customers: CustomerInfo[] = [{
@@ -29,11 +36,23 @@ function App() {
     job: "농기계 엔지니어"
   }];
 
-  return <>
-    {customers.map((customer) => {
-      return <Customer key={customer.id} {...customer}></Customer>
-    })}
-  </>
+  return <RootStyle>
+    <Table sx={{ minWidth: '1080px' }}>
+      <TableHead>
+        <TableCell>아이디</TableCell>
+        <TableCell>프로필사진</TableCell>
+        <TableCell>이름</TableCell>
+        <TableCell>생년월일</TableCell>
+        <TableCell>성별</TableCell>
+        <TableCell>직업</TableCell>
+      </TableHead>
+      <TableBody>
+        {customers.map((customer) => {
+          return <Customer key={customer.id} {...customer}></Customer>
+        })}
+      </TableBody>
+    </Table>
+  </RootStyle>
 }
 
 export default App;
